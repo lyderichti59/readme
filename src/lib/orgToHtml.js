@@ -4,11 +4,13 @@ import inspectUrls from 'rehype-url-inspector';
 
 import orgParse from 'uniorg-parse';
 import org2rehype from 'uniorg-rehype';
+import highlight from 'rehype-highlight';
 
 const processor = unified()
   .use(orgParse)
   .use(extractExportSettings)
   .use(org2rehype)
+  .use(highlight)
   .use(inspectUrls, { inspectEach: processUrl })
   .use(toJson);
 

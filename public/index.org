@@ -1,18 +1,24 @@
-#+TITLE: Uniorg braindump example
+#+TITLE: Lydéric's Braindump
+#+SUB-TITLE: Good Luck !
 
-This is an example braindump built with [[https://github.com/rasendubi/uniorg][uniorg]] and [[https://nextjs.org/][Next.js]].
+Hi, welcome on my braindump ! Here, you'll find most of the notes I
+take, useful links I have read, conceptual thoughts, and many other
+ideas.
 
-Source code is available [[https://github.com/rasendubi/uniorg/tree/master/examples/org-braindump][at GitHub]].
+From sharing comes unity, and I'm fearly convinced that
+[[https://www.youtube.com/watch?v=1THE-vyhk4A]["Apes together strong"]].
+ So, feel free to reach to me one way or the other.
 
-You can use ~create-next-app~ to bootstrap the example for you:
-#+begin_src sh
-npx create-next-app --example https://github.com/rasendubi/uniorg/tree/master/examples/org-braindump
-#+end_src
+You can start by clicking on those links :
+- [[file:archive][See summary]]
+- [[file:./lyderic.org][Who am I ?]]
 
-Browse other pages:
-- [[file:./uniorg.org][uniorg]]
-- [[file:./styling.org][Styling]]
-- [[file:./code-highlight.org][Code highlight]]
-- [[file:./changing-posts-directory.org][Changing posts directory]]
-- [[file:./archive-page][Archive page]]
-- [[file:./org-roam.org][org-roam]]
+
+The first release of this braindump has been made on the 31st
+January 2021. It is still under active development. So, stay tuned,
+more content is about to come soon.
+
+
+
+PS : This braindump has been created from [[https://github.com/rasendubi/uniorg/tree/master/examples/org-braindump][this sample project]] and is
+powered by [[https://github.com/rasendubi/uniorg][uniorg]] and [[https://nextjs.org/][Next.js]].

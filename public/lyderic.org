@@ -1,0 +1,17 @@
+#+TITLE: Hey, I am Lydéric
+
+Hello world !
+
+I'm *Lydéric Dutillieux*, I'm 22 years old at time of writing, and I'm
+passionate about technology, business, investment, personnal
+development and science.
+
+There are many things I would like to achieve in my life, and I guess
+that starting with [[https://en.wikipedia.org/wiki/FIRE_movement][FIRE (Financial Independance, Retire Early)]] would
+allow me to work full time on solving most of the world's biggest
+problems, regardless of my time's ROI.
+
+For now, I'm mainly earning a living as a *Freelance Software Engineer*,
+with [[https://www.origenial.fr/][Origénial]] and investing most of my time in developping a
+platform, called [[https://www.ponceleo.com/][Ponceleo]], that aims at *expanding the lifespan of people's goods*
+and *fighting against planned obsolescence*.
