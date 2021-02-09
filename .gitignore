@@ -32,3 +32,13 @@ yarn-error.log*
 
 # vercel
 .vercel
+
+#emacs
+.projectile
+.dir-locals.el
+
+#firn
+**/_firn
+
+#WIP
+private/

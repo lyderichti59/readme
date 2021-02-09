@@ -1,24 +1,27 @@
-#+TITLE: Lydéric's Braindump
+#+TITLE: Lydéric's Digital Garden
 #+SUB-TITLE: Good Luck !
+#+DATE_CREATED: <2021-01-30 sam.>
+#+DATE_UPDATED: <2021-02-09 21:21>
 
-Hi, welcome on my braindump ! Here, you'll find most of the notes I
+Hi, welcome on my digital garden ! Here, you'll find most of the notes I
 take, useful links I have read, conceptual thoughts, and many other
-ideas.
+ideas about business, IT, personal development and science.
 
-From sharing comes unity, and I'm fearly convinced that
-[[https://www.youtube.com/watch?v=1THE-vyhk4A]["Apes together strong"]].
- So, feel free to reach to me one way or the other.
+Sharing gives many collective opportunities, and I'm fearly convinced that
+ [[https://www.youtube.com/watch?v=1THE-vyhk4A]["Apes together strong"]].
+ So, feel free to reach out one way or the other.
 
 You can start by clicking on those links :
-- [[file:archive][See summary]]
-- [[file:./lyderic.org][Who am I ?]]
+- [[file:introducing-myself.org][Who am I ?]]
+- [[file:compound-interests-of-learning.org][Benefits of Learning]]
+- [[file:local-first-software.org][Local-First Software (French)]]
 
 
 The first release of this braindump has been made on the 31st
-January 2021. It is still under active development. So, stay tuned,
-more content is about to come soon.
+January 2021. It is still under active development. *So, stay tuned,
+more content is about to come soon.*
 
+-----
 
-
-PS : This braindump has been created from [[https://github.com/rasendubi/uniorg/tree/master/examples/org-braindump][this sample project]] and is
-powered by [[https://github.com/rasendubi/uniorg][uniorg]] and [[https://nextjs.org/][Next.js]].
+/PS/ : This *digital garden* is written with [[https://www.gnu.org/software/emacs/][Emacs]] using [[https://www.orgmode.org/][org files]], and
+brought to the web with [[https://firn.theiceshelf.com/][Firn]] using [[https://clojure.org/][Clojure]].

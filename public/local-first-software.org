@@ -1,0 +1,612 @@
+#+TITLE: Consommer "Local-First" en informatique
+#+DATE_CREATED: <2021-02-02>
+#+DATE_UPDATED: <2021-02-09 18:26>
+#+LANGUAGE: fr
+#+FIRN_UNDER: "Blog"
+#+FIRN_ARTICLE: true
+
+* Article
+** Introduction
+*** C'est qui le patron ? L'utilisateur ou le data center ?
+
+    En 2020, chacun de nous a généré en moyenne *[[https://www.domo.com/assets/downloads/18_domo_data-never-sleeps-6+verticals.pdf][1.7 Mo de donnée par
+    seconde]]*. Pourtant, à l'heure où la donnée est considérée comme
+    [[https://usbeketrica.com/fr/article/quatre-metaphores-pour-une-politique-de-la-donne]["le nouveau pétrole du net"]], du moins par ceux qui savent
+    l'exploiter, le constat est sans appel : *les données que nous
+    générons ne nous sont pas facilement accessibles*. Une bonne
+    partie de cette donnée atterrie dans "Le Cloud", c'est à dire dans
+    [[https://www.ictjournal.ch/articles/2019-05-13/le-cloud-cest-lordinateur-de-quelquun-dautre]["l'ordinateur de quelqu'un d'autre",]] si l'on s'autorise cette
+    définition vulgaire du cloud.
+
+    Certains fournisseurs de services en ligne proposent des
+    fonctionnalités d'export de vos données. En tant qu'utilisateur,
+    cela vous permet de "récupérer" vos données sur votre machine, et
+    de jouir de la liberté de les visualiser ou les traiter comme bon
+    vous semble. Mais j'insiste sur la sémantique du mot 'récupérer' :
+    Verbe transitif signifiant 'rentrer en possession de ce qu'on avait
+    perdu ou dépensé'.
+
+    Dans de nombreux cas, lorsque vous exportez des données depuis
+    votre fournisseur de service en ligne, vous effectuez bien une
+    'récupération' avec le sens donné ci-dessus. Vous récupérez sur
+    votre machine des données qui n'y ont jusqu'alors jamais résidé
+    bien que vous les ayez envoyées au fournisseur de services
+    cloud. Qui plus est, vous ne récupérez que ce que le fournisseur
+    de services accepte d'exporter. Rendez-vous compte de la
+    situation. *Pour avoir vos propres données sur votre propre
+    machine, vous devez d'abord en faire don* *à votre fournisseur de
+    services et ensuite lui en demander une copie.*
+
+    Vous avez certainement déjà expérimenté la situation suivante :
+    - Vous vous connectez à un service en ligne ;
+    - Vous effectuez une modification de vos données personnelles ;
+    - Soudain, une erreur réseau se produit ;
+    - Le serveur ne répond plus, un logo de chargement se met en route ;
+    - Vous vous demandez donc "Ma modification a-t-elle été prise en
+      compte ?" ;
+    - Après avoir perdu patience, vous rafraichissez la page ;
+    - Vous constatez malheureusement que votre modification a disparu !
+
+    Aujourd'hui, ce scénario est si courant qu'il en est devenu
+    habituel. On n'imagine pas d'alternative, c'est presque
+    incontestable : *c'est le serveur qui décide*. Vous conviendrez
+    qu'il peut-être pertinent de remettre en doute cette dernière
+    assertion. *Qui est vraiment le patron des données que je génère
+    ?* Est-ce moi, ou bien est-ce le serveur qui me permet d'y accéder
+    via internet ?
+
+    En 2021, souvent, c'est la donnée présente sur les serveurs qui
+    fait foi. Mais il n'en a pas toujours été ainsi... Remontons le
+    temps ensemble, et rappelons nous ce que nous avons oublié de
+    l'époque où l'outillage informatique n'était pas "serveur-centré".
+
+*** Comment on faisait avant internet ? Retour vers le futur
+
+    Avant qu'internet ne devienne ce que nous connaissons aujourd'hui,
+    nous avions un usage très différent de nos ordinateurs,
+    particulièrement en ce qui concerne les activités de création de
+    contenu ou de gestion de données personnelles. *Nous installions
+    des logiciels sur notre machine* et pouvions directement commencer
+    à les utiliser. Inutile de 'Créer un compte', 'Choisir une adresse
+    mail', 'Choisir un mot de passe', 'Choisir un mot de passe avec
+    minimum 8 caractères, un caractère spécial, et de la poudre de
+    perlimpinpin'. *Nos données étaient stockées uniquement dans notre
+    machine*, elle même protégée par un mot de passe utilisateur pour
+    en assurer la sécurité.
+
+    Dans certains cas, les données étaient stockées sous forme de
+    *fichiers lisibles et éditables*, permettant des cas d'usages que
+    l'outil en question n'avait pas prévu. Les modifications que nous
+    entreprenions sur un fichier étaient *instantanées*, *sans latence
+    réseau*, sans contempler le mouvement perpétuel de l'icône de
+    chargement, *sans dépendre d'une connexion internet*. Les seules
+    limites étaient la puissance de calcul, la vitesse d'écriture sur
+    les disques durs et l'espace disponible sur ces derniers. Ces
+    limites ont d'ailleurs été repoussées depuis, et continuent de
+    l'être.
+
+    Quant à la collaboration entre collègues, elle n'était pas impossible
+    pour autant. Peut-être était elle moins fluide qu'avec les actuels
+    espaces de travail en ligne ? Je l'accorde. Mais c'est davantage une
+    question de moyens techniques disponibles à l'époque qu'une question
+    d'architecture centralisée des SI (Systèmes d'Information).
+
+    Les partages de fichiers se faisaient pour partie en P2P (Peer to
+    Peer, de paire à paire). Via les logiciels directement, ou bien
+    plus primitivement, par clef USB, par email, ou encore par
+    Ethernet. *La donnée ne voyageait pas bien loin*, les transferts
+    étaient peu gourmands en bande passante et en énergie. *La
+    sécurité informatique était plus primitive, physique, géographique*.
+
+    Si Bob voulait accéder au fichier d'Alice, cette dernière pouvait
+    tout de même partager tout un dossier de son ordinateur aux autres
+    utilisateurs du réseau LAN (réseau privé). Il était également
+    possible de *stocker les données* utilisées par le programme *sur
+    un serveur propre à l'entreprise*, disponible uniquement sur le
+    réseau local privé et régi par des droits d'accès utilisateur.
+
+    En guise de synthèse rétrospective et schématique, on peut affirmer
+    deux choses :
+    - *Les SI de l'époque* étaient efficaces en terme de *sécurité et
+      de maintien de la propriété de la donnée*.
+    - *Les SI d'aujourd'hui sont efficaces* en terme de *connectivité*,
+      *collaboration*, *partage* et *synchronisation en temps réel* de la
+      donnée.
+
+    Et si nous pouvions tirer le meilleur des deux mondes ? C'est la
+    promesse de l'approche *"Local First"*.
+** Qu'est-ce que le Local-First ?
+*** Définition de l'approche Local First
+
+    *L'approche 'Local-First', en génie logiciel, est un ensemble de
+    principes* *promouvant le fonctionnement en local d'un système
+    informatique.*
+
+    Cette approche a été démocratisée par *[[https://martin.kleppmann.com/][Martin Kleppmann*]] en Avril
+    2019 dans son article scientifique [[https://martin.kleppmann.com/papers/local-first.pdf]["Local-first software: you own
+    your data, in spite of the cloud"]]. (Aparté : Je vous encourage
+    vivement à lire ses travaux, très riches en information. Je ne me
+    concentre ici que sur une partie essentielle mais non exhaustive
+    de son article. Le reste de mon propos est issu de mes propres
+    réflexions sur le sujet.)
+
+    Kleppmann y définit les 7 propriété idéales des logiciels Local-First:
+    - /*Rapidité*/ : Toutes les données sont *stockées sur la machine
+      de l'utilisateur*, et font autorité. Les opérations qui
+      manipulent de la donnée sont donc *effectives immédiatement* et
+      éventuellement *synchronisées en tache de fond* sans la moindre
+      perturbation pour les utilisateurs. *Aucune latence réseau* due
+      à des transferts de données entre la machine et le serveur ne
+      doit survenir lorsqu'un utilisateur intéragit avec sa
+      donnée. Rien ne justifie le moindre "Chargement..." ou la
+      moindre interruption de l'interaction homme-machine.
+
+    - /*Multi-plateforme*/ : Bien que la donnée soit stockée
+      directement sur les appareils de l'utilisateur, rien n'empêche
+      qu'elle soit *synchronisée entre ses multiples appareils*
+      (ordinateur, tablette, mobile, ...) grâce à *n'importe quel
+      canal de communication* sur réseau local (NFC, Bluetooth, WiFi,
+      USB, Ethernet, ...).
+
+    - /*Hors-ligne*/ : Le système doit pouvoir fonctionner *sans
+      connexion internet* si besoin, et se synchroniser plus tard
+      lorsqu'une connexion est disponible avec n'importe quel canal de
+      communication.
+
+    - /*Multi-utilisateur*/ : Le logiciel doit supporter des
+      *interactions en temps réel* entre différents utilisateurs, avec
+      des performances, une fluidité et une gestion de conflit qui
+      égalent ou surpassent celles qu'on trouve actuellement sur les
+      plateformes Cloud. C'est un des plus gros challenges du
+      Local-First à ce jour, sur lequel beaucoup de progrès sont
+      effectués.
+
+    - /*Disponibilité*/ : Pouvoir *accéder n'importe quand à ses données*,
+      que ce soit à court terme ou à long terme. Si l'éditeur logiciel
+      vient à arrêter le support du logiciel, ou à mettre la clef sous
+      la porte, cela ne devrait impacter en rien ni les données de
+      l'utilisateur, ni son aptitude à utiliser le logiciel.
+
+    - /*Sécurité*/ : Les serveurs de copie/sauvegarde doivent exclusivement
+      contenir des *données cryptées de bout en bout*, prévenant
+      ainsi toute fuite de données vers des tiers malveillants.
+
+    - /*Propriété*/ : Le logiciel doit permettre à l'utilisateur de
+      *disposer de sa donnée comme bon lui semble* et aucun tiers ne
+      doit poser d'entrave à quelque opération que ce soit concernant
+      la donnée de l'utilisateur. La donnée peut vivre, avoir de la
+      valeur et *être utilisée en dehors du logiciel* sur laquelle
+      elle a été créée. En particulier, cela rends possible les
+      opérations de migration d'un logiciel à l'autre.
+
+    En résumé, un logiciel *'Local-First'* doit être capable de
+    fonctionner en toute *indépendance de l'éditeur logiciel*, sur
+    l'infrastructure *privée et locale* de l'utilisateur. *Par
+    construction*, cela lui garantit un fonctionnement *hors-ligne*
+    (sans internet), une *latence minimale*, une *disponibilité
+    maximale*, la même sécurité que sa machine personnelle et des
+    *interactions à huis clos* entre collaborateurs. Dans un système
+    'Local-First', c'est la donnée présente sur la machine de
+    l'utilisateur qui fait autorité, et le serveur qui en "récupère"
+    une copie cryptée, pas l'inverse.
+
+*** Pour quel type de services ?
+
+    Soyons nuancés et objectifs. Aucune approche n'est[[https://fr.wikipedia.org/wiki/Pas_de_balle_en_argent][ "une balle en
+    argent"]]. En informatique comme dans toute autre science pratique,
+    *tout est question de compromis*. Certains modèles fonctionnent bien
+    pour certains besoins et moins bien pour d'autres. Il en est
+    exactement de même pour l'approche Local-First.
+
+    Prenons le contre-exemple d'un réseau social comme Linkedin ou
+    Reddit, pour ne citer qu'eux. L'essence même de ces plateformes
+    est de permettre à des individus d'interagir sur une place
+    virtuelle publique. Par construction, et bien qu'elle soit
+    envisageable, une approche Local-First ne semble pas pertinente au
+    premier abord pour construire des systèmes à forte interaction publique.
+
+    En revanche, il est fréquent pour une équipe de partager des
+    fichiers sur Google Docs, OneDrive ou DropBox, communiquer sur
+    Slack, Teams ou Discord, organiser son travail sur Trello ou
+    encore Jira. Pourtant l'*usage* que nous faisons de ces services
+    externes est *principalement privé*. La donnée générée par cet
+    usage a vocation à être *utilisée en local* sur la machine des
+    utilisateurs, et à *transiter d'un collaborateur à l'autre
+    uniquement*. Nous pourrions tout à fait utiliser des services
+    Local-First qui *couvrent exactement les mêmes besoins* et
+    garantissent une collaboration à huis clos performante et
+    sécurisée. Alors pourquoi pas ?
+
+    [[https://www.cam.ac.uk/][L'Université de Cambridge]] et [[https://www.inkandswitch.com/][Ink & Switch]], un laboratoire de
+    recherche informatique, se sont penchés sur la question et ont
+    réalisé trois prototypes assez complets pour prouver par l'exemple
+    la viabilité d'une approche Local-First. En particulier, ils ont
+    développé Trellis, un clone de Trello, le fameux outil de gestion
+    de projet qui s'inspire de la méthode Kanban développée par
+    Toyota. Alors que Trello est complètement serveur-centré, *Trellis
+    est Local-First*. Pour illustrer mes propos, voici une courte
+    vidéo de démonstration de Trellis [[https://www.youtube.com/watch?v=L9fdyDlhByM][ici]]. *Le code source est
+    [[https://github.com/automerge/trellis][disponible en open-source]]*. Chers confrères informaticiens,
+    n'hésitez pas à vous en inspirer.
+
+*** Les autres vertus du 'Local-First'
+
+    *Pour l'utilisateur, les avantages du local-first sont vraiment
+    nombreux.* Si la sécurité de vos données n'est pas votre
+    principale préoccupation, vous conviendrez sans doute que la
+    décentralisation des services présente d'autres avantages :
+
+    - /*Indépendance et durée de vie*/ : Une fois que le logiciel est
+      installé sur votre machine, et puisqu'il permet une utilisation
+      hors ligne et en autonomie, vous ne craindrez ni la *faillite de
+      l'éditeur du logiciel*, ni *l'extinction temporaire ou
+      définitive de ses serveurs*. Il est courant que certaines
+      entreprises décident d'arrêter certains services, obligeant
+      ainsi leurs utilisateurs à trouver une solution alternative très
+      rapidement. De plus, grâce à la [[https://fr.wikipedia.org/wiki/Virtualisation][virtualisation]], même si vous
+      mettez à jour vos systèmes d'exploitations sur vos machines, et
+      qu'une incompatibilité survient, *vous serez toujours capables
+      de faire tourner votre bon vieux logiciel local-first* dans une
+      machine virtuelle.
+
+    - /*Pas de surprise*/ : Pour les mêmes raisons que celles du point
+      ci-dessus, en consommant local-first, vous n'aurez plus à vous
+      soucier ni du *risque de changement de tarif* des services que
+      vous utilisez, ni des *mises à jour indésirables*, ni des
+      *interruptions inattendues de service*.
+
+    - /*Disponibilité*/ : Avoir besoin d'une connexion internet pour
+      fonctionner est une faiblesse architecturale appelée SPOF
+      (Single Point of Failure, littéralement Point de défaillance
+      unique). Grâce aux fonctionnalités hors-ligne, il est possible
+      *d'utiliser les logiciels local-first dans des endroits extrêmes
+      (TGV, Avion, sous-terrain, zone blanche)*. Les canaux de
+      communications alternatifs et locaux (WiFi, câbles,
+      Bluetooth,...) vous permettent de continuer la synchronisation
+      multi-plateforme et multi-utilisateurs même dans ces conditions,
+      ce qui est un avantage non négligeable pour certains profils
+      d'utilisateurs.
+
+    - /*Interoperabilité*/ : En particulier pour les profils
+      techniques et les utilisateurs avancés, le fait de disposer de
+      la donnée en local offre des possibilités d'intégration avec
+      d'autres logiciels (encore une fois, sans démultiplier les
+      tierces parties qui accèdent à cette donnée). Je pense par
+      exemple à la possibilité *d'utiliser des feuilles de calcul pour
+      effectuer un suivi statistique plus poussé* que ce qu'offre par
+      défaut le logiciel. Mais il peut également être judicieux de
+      bénéficier de ce genre d'atouts dans le cas d'une *migration
+      progressive d'un logiciel à l'autre* par exemple. *L'utilisateur
+      ne se sent pas pris au piège* par son fournisseur de service.
+
+** Les enjeux du Local-First...
+*** ... sur le plan UX
+
+    *S'affranchir d'internet* n'est pas une mince affaire. Fort
+    heureusement, des solutions sont dores et déjà employées pour
+    relever les défis du Local-First.
+
+    Par exemple, un utilisateur inaccoutumé aux applications
+    décentralisées pourrait être surpris par des *changements en terme
+    d'expérience utilisateur*. En effet, les systèmes décentralisés
+    offrent beaucoup plus de choix et de libertés aux
+    utilisateurs. *Des étapes de configuration ou d'administration
+    système peuvent s'avérer nécessaires* à l'installation ou en début
+    de session. Le risque de tomber dans [[https://fr.wikipedia.org/wiki/Surabondance_des_choix][le paradoxe du choix]] est à
+    prendre en compte, et une solution "clef en main"/"magique"
+    offrant moins de libertés peut alors s'avérer attractive, surtout
+    à court terme, aussi contre-intuitif que cela puisse sembler.
+
+    D'autres considérations sont à prendre en compte pour
+    l'utilisateur. En fonction de l'usage qu'il choisit de faire du
+    système local-first, il peut être *responsabilisé et amené à gérer
+    lui même la sécurité* de son infrastructure locale, le
+    dimensionnement de *ses moyens de stockage*, les sauvegardes de
+    données et la configuration de *ses canaux de communication* pour
+    une synchronisation entre appareils. *Gérer une installation* sur
+    son ordinateur peut également s'avérer fastidieux en comparaison
+    avec une simple connexion à un portail web.
+
+    Pour aider les utilisateurs à consommer local-first, il est
+    possible en tant qu'éditeur logiciel de *fournir une bonne
+    configuration de base par type d'utilisateurs* et laisser
+    l'utilisateur modifier sa configuration plus tard, lorsqu'il
+    aura acquis de l'expérience sur logiciel. Pour une entreprise, il
+    est possible de *faire appel à un administrateur système* et de
+    réduire au maximum les nombres de choix qu'auront à effectuer les
+    utilisateurs.
+
+    Par ailleurs, au fil des années, *les formats de données supportés
+    par les applications et logiciels évoluent*. De nouveaux émergent,
+    d'autres sombrent. Si l'on envisage de faire un *usage durable de
+    sa donnée*, alors on peut être amené à utiliser des convertisseurs
+    d'un format à l'autre, ou des scripts de migration. Effectuer ces
+    opérations régulièrement permet *d'éviter d'accumuler de la dette
+    technique*.
+
+    Il arrive parfois que des utilisateurs très insatisfaits
+    abandonnent des solutions propriétaires opaques ou
+    payantes. Certains de ces utilisateurs se tournent alors vers des
+    éditeurs de logiciels du monde de *l'Open Source* et leur font don
+    du montant économisé. Je peux citer l'exemple de [[https://tonsky.me/blog/syncthing/][ce bloggeur]], qui
+    a résilié son abonnement de 10€/mois chez DropBox et en a fait don
+    à [[https://syncthing.net/][Syncthing]], solution open-source, partiellement Local-First et
+    bien plus à son goût. Voilà de quoi remettre un peu de sens
+    derrière les métiers techniques : *en construisant de beaux
+    produits qui bichonnent les utilisateurs*, *on améliore leur vie
+    au point d'en obtenir des dons.*
+
+*** ... sur le plan technique
+
+    /*Nota bene*/ : *N'hésitez pas à sauter cette partie*, en particulier si
+    vous n'êtes pas familier avec le jargon technique. Les parties qui
+    suivent donnent un peu moins mal aux cheveux.
+
+    Permettre un usage hors-ligne impose *quelques contraintes
+    techniques et qualitatives*.
+
+    Des solutions existent pour que les navigateurs internet puissent
+    fonctionner sans connexion à internet et stocker des données en
+    local sur la machine des utilisateurs. Dans son article, Kleppmann
+    cite les plus connues : le 'localStorage', les 'services workers',
+    les 'PWA' (Progressive Web Apps), l'API cache JavaScript,
+    ... Cependant, étant donné l'*historique très "serveur-centré" des
+    navigateurs internet*, ces solutions fonctionnent davantage comme
+    une roue de secours que comme le moteur de la machinerie. En
+    particulier, il peut arriver qu'un utilisateur supprime ses
+    cookies ou son cache, manuellement ou automatiquement, et par
+    conséquent, qu'il perde ses précieuses données. Sans compter qu'il
+    semble difficile pour l'utilisateur d'empêcher les mises à jour
+    indésirables de la webapp lorsqu'il s'y connecte.
+
+    *Par soucis de résilience* à ce genre de risques, mieux vaut se
+    pencher sur des alternatives *en dehors du navigateur web*.
+    Je pense notamment à deux grandes possiblités :
+    - *Développer avec une technologie native propre à chaque
+      environnement* (application de bureau pour MacOs, Windows,
+      Linux, ... et applications mobiles et tablette pour iOS,
+      Android, ...)  Bien que ce soit en général plus qualitatif,
+      c'est en pratique très coûteux de maintenir autant de versions
+      différentes.
+
+    - *Utiliser des technologies multi-plateformes* (compatibles avec
+      la majorité des systèmes d'exploitation d'ordinateur, de
+      tablette, et de mobile) telles que [[https://www.electronjs.org/][Electron]], [[https://dotnet.microsoft.com/apps/xamarin][Xamarin]], [[https://flutter.dev/][Flutter]] et
+      autres. Certes cette approche n'égale pas les performance et les
+      possibilités d'un développement sur une technologie native, mais
+      la couverture des besoins classiques est très bonne. Cela en
+      fait un type de technologie *très prometteur, notamment en terme
+      de temps et de coût de développement*.
+
+    Un autre problème technique mineur pouvant survenir est la
+    *compatibilité entre les différentes version du logiciel*, en
+    particulier lorsque des individus voués à collaborer utilisent des
+    versions différentes. Il faut donc *privilégier les modifications
+    non cassantes* ou agir collectivement lors d'un passage à une
+    version plus récente.
+
+    Une fois résolus tous ces problèmes de surface, rentrons un peu
+    plus dans le détail (mais pas trop, je me réserve le luxe de vous
+    expliquer tout ça dans un autre article, un peu plus technique)
+
+    - /*Synchronisation et réplication multi-maître*/ : Implémenter
+      une synchronisation entre plusieurs utilisateurs n'est pas chose
+      simple. Si de multiples utilisateurs ont besoin d'échanger des
+      modifications de façon asynchrone (sans être connectés au réseau
+      en même temps), alors *il faut qu'au moins un des noeuds du
+      réseau puisse répliquer, conserver et relayer les modifications*
+      qu'un utilisateur A a effectué pendant que B et C étaient hors
+      ligne. Rappellez vous, en Local-First, *le serveur ne sert que
+      de copie/relais asynchrone des modifications* et n'a pas
+      autorité sur quelle version est la bonne. Chaque utilisateur
+      possède *sa* bonne version et le serveur intègre les
+      modifications de chacune d'entre elles. Dans ce contexte de
+      système distribué, *on parle alors de réplication multi-maître*
+      ([[https://en.wikipedia.org/wiki/Multi-master_replication][Multi-master replication]]). Il existe des bases de données
+      adaptées à ce genre de problématiques, notamment [[https://couchdb.apache.org/][CouchDB]] (et son
+      acolyte côté client : [[https://pouchdb.com/][PouchDB]]), [[https://www.arangodb.com/][ArangoDB]] ou encore [[https://www.ibm.com/cloud/cloudant][Cloudant]].
+
+    - /*Communication réseau*/ : Kleppmann propose des protocoles de
+      communication tels que le [[https://webrtc.org/][WebRTC]], [[https://ipfs.io/][l'IPFS]], et [[https://hypercore-protocol.org/][HyperCore]]. Ces
+      trois protocoles sont des alternatives à l'HTTP et sont plus
+      adaptés à ce contexte d'architecture distribuée multi-maîtres.
+      Plus précisément :
+      - *le WebRTC* fonctionne avec une communication triangulaire : un
+        serveur sert de relais/réplication entre deux utilisateurs en
+        bout de chaîne.
+      - *L'IPFS* permet de se passer de serveur intermédiaire sous
+        réserve que chacun des utilisateurs soit en ligne. Les
+        utilisateurs forment alors un réseau en graphe (pas de noeud
+        central). Chaque contenu disponible sur le réseau P2P se voit
+        affecté un léger hash en guise d'identifiant de contenu (CID :
+        Content Identifier). Chaque utilisateur possédant une
+        copie de ce contenu est capable de la servir à qui la lui
+        demande.
+      - *l'Hypercore* est un protocole de partage P2P en temps réel de
+        journaux de modifications.
+      Ces technologies à haute performance sont parfois méconnues du
+      grand public et sont à utiliser avec les mêmes précautions que
+      tout autre protocole réseau, notamment en terme de
+      dimensionnement et de sécurité.
+
+    - /*Résolution de conflits et réplication*/ : Lorsque deux
+      appareils hors-ligne effectuent des modifications en même temps,
+      puis se synchronisent : *il faut potentiellement résoudre des
+      conflits*.  Quelle modification est la bonne ? Les outils de
+      gestion de versions tels que Git sont coutumiers de ce genre de
+      problème. *Des stratégies de résolutions de conflits existent*
+      et peuvent être appliquées manuellement par les utilisateurs ou
+      automatiquement en fonction du contexte dans lequel
+      l'application est utilisée. Kleppmann présente [[https://martin.kleppmann.com/2020/07/06/crdt-hard-parts-hydra.html][ici]] les *"types
+      de donnés répliqués sans conflits"* (*CRDT* : *Conflict-free
+      Replicated Data Types*). Ce modèle est prometteur du moins en ce
+      qui concerne les données structurées. Pour les textes non
+      structurés, [[https://git-scm.com/docs/merge-strategies][les stratégie de fusion qu'offre Git]] ont dores et
+      déjà prouvé leur efficacité.
+
+    - /*Performance pour les calculs lourds*/ : Si votre machine
+      locale ne tient pas le coup en terme de temps d'exécution de
+      certains calculs lourds, alors il est envisageable *d'utiliser
+      la puissance de calcul des autres appareils sur le réseau* grâce
+      à une technologie de calcul distribué [[https://golem.network/][Golem]] ou encore d'attendre
+      un accès à internet déléguer les calculs à des
+      [[https://qarnot.com/radiateur-ordinateur/][radiateurs-ordinateurs]] ([[https://qarnot.com/][ordinateurs Qarnot]]), ces fameux
+      ordinateurs qui *récupèrent la chaleur dégagée par les gros
+      calculs pour chauffer des foyers*.
+
+    - /*Volumétrie de donnée*/ : Dans le même esprit que pour la
+      performance, il est tout a fait possible *d'opter pour un
+      stockage distribué sur les machines du réseau* avec le protocole
+      IPFS présenté plus haut ou à l'extérieur du réseau avec une
+      technologie comme [[https://filecoin.io/][FileCoin]]
+
+    Pour conclure sur l'aspect technique, vous conviendrez qu'adopter
+    une approche Local-First demande un peu de préparation. Il faut
+    s'approprier des technologies récentes, parfois bas niveau, dont
+    l'usage n'est ni industrialisé à l'heure ou j'écris lignes, ni
+    maîtrisé par le plus grand nombre. Il faut accepter de remettre en
+    question les modèles 'classiques' et aligner son approche avec le
+    besoin utilisateur ou le produit que l'on cherche à construire.
+
+*** ... sur le plan business
+
+    Les fins nez qui ont tenu jusqu'ici m'attendent certainement au
+    tournant. *Comment développer un logiciel Local-First peut-il être
+    rentable ?*
+
+    Si les utilisateurs d'un logiciel Local-First choisissent de ne
+    pas partager leur données, *l'éditeur n'a aucune chance de générer
+    de la valeur en exploitant ou revendant ces données*. Pour
+    l'éditeur, ce manque à gagner est en quelque sorte le prix à payer
+    pour construire un système sain et éthique au regard des données
+    de ses utilisateurs.
+
+    Notons au passage que disposer d'une faible quantité de données
+    sur les usages qui sont faits d'un logiciel peut *rendre difficile
+    l'amélioration continue* de ce dernier et le développement de
+    nouvelles fonctionnalités. Sans retour utilisateur automatique via
+    une collecte de données, l'éditeur peut avoir l'impression de
+    travailler à l'aveugle. Pour autant, rien ne lui empêche de *mener
+    régulièrement des enquêtes de satisfaction utilisateur*, ou de
+    disposer d'un espace de réclamation en ligne. Autrement dit, il
+    est possible de *collecter des retours utilisateurs de façon
+    ciblée, explicite et consentie.*
+
+    De plus, la rareté de la compétence couplée au temps nécessaire
+    pour développer du Local-First laissent penser qu'un
+    investissement initial conséquent est à prévoir.
+
+    *Alors finalement, est-ce que ça vaut vraiment le coup ?*
+
+    Bien sur que oui !
+
+    *Collecter, exploiter et revendre des données n'est pas la seule
+    façon de gagner de l'argent avec une solution logicielle !*
+
+    Vente de licences d'utilisation, vente d'extensions sur-mesures
+    pour ses clients, support technique, hébergement ou assistance à
+    l'hébergement autonome, maintenance, sponsoring, ...
+
+    Les opportunités sont nombreuses et les [[https://fr.wikipedia.org/wiki/Mod%C3%A8les_%C3%A9conomiques_des_logiciels_open_source][modèles économiques]] de
+    l'[[https://fr.wikipedia.org/wiki/Open_source][Open Source]] ne peuvent qu'appuyer mes propos.
+
+    Pour autant, et bien que j'en sois un fervent défenseur, *il n'est
+    pas requis de tomber dans l'idéalisme de l'Open Source* : les
+    logiciels propriétaires ont davantage de raisons de générer du
+    profit. Occulter la recette de fabrication d'une technologie
+    innovante, qui plus est dont le coût de développement est élevé,
+    permet de *réduire le risque d'apparition de nouveaux entrants*
+    (cf [[https://fr.wikipedia.org/wiki/Cinq_forces_de_Porter][les Cinq Forces de Michael Porter]]) et d'être en position de
+    force sur le marché de la prestation de services autour de son
+    produit.
+
+    Prendre en otage les données des utilisateurs n'est pas le seul
+    moyen d'en améliorer le taux de rétention. *Construire un produit
+    éthique, respectueux et permissif* en est un autre. Certes, cela
+    impose quelques contraintes techniques, managériales, économiques
+    et stratégiques, mais à mon sens, *le jeu en vaut largement la
+    chandelle* : qualité inégalée, utilisateurs conquis même sur le
+    long terme, produit sans écart moral, ...
+
+*** ... sur le plan sociétal
+
+    Produire Local-First, c'est "ouvrir les binaires" (i.e. partager
+    aux utilisateurs les fichiers nécessaires pour faire tourner le
+    programme en local) ou encore "ouvrir le code source". Mais
+    consommer Local-First, c'est potentiellement *"fermer la donnée"*.
+
+    *Quel serait l'impact sur la société d'une rétention de données
+    généralisée ?*
+
+    Ne pas partager ses données, c'est risquer de ne pas en exploiter
+    tout le potentiel. Prenons un exemple marquant pour illustrer
+    cela : Supposons que je collecte à titre personnel et privé des
+    données bio-métriques sur mon métabolisme, et que je m'en réserve
+    l'accès exclusif. N'ayant aucune compétence en médecine, je serais
+    dans l'incapacité de détecter une anomalie et donc de prévenir un
+    accident grave ou vital. Supposons à présent que des milliers
+    d'individus au profil similaire au mien font la même chose, et
+    possèdent les même symptômes que moi, probablement pour les mêmes
+    raisons (condition de vie, génôme, ...). *Sans partage de données* à
+    l'échelle de la société, *les études statistiques macroscopiques
+    sont impossibles.* Lorsqu'elles ne sont pas saisies, ces
+    opportunités de faire progresser les diagnostics médicaux, et plus
+    généralement la science, constituent un véritable manque à gagner
+    pour la société. *Partager ses données peut permettre d'oeuvrer
+    intelligemment et collectivement.*
+
+    Il est essentiel qu'un tiers qui collecte des données adopte *une
+    politique éthique, transparente et intelligible*. En levant toute
+    ambiguïté quant aux usages, les utilisateurs comprennent les
+    intérêts individuels et collectifs du partage de donnée, et y
+    consentent de manière réfléchie, sans aucun rapport de force. En
+    ce sens, *il est possible de collecter des données avec le
+    Local-First*. Cependant, cette démarche est rendue tangible
+    puisque le partage de données est optionnel donc explicite et
+    manuel au moment de la configuration, et se fait en contrepartie
+    de bénéfices bien définis. *L'utilisateur est plus engagé* sur le
+    devenir de sa donnée.
+
+    Par ailleurs, produire et consommer Local-First n'est pas sans
+    conséquences sur l'écologie. Décentraliser le stockage ou la
+    puissance de calcul peut provoquer des régressions en terme
+    d'efficience (perte des économies d'échelle, baisse des taux
+    d'utilisation, hardware archaïque et gourmand, infrastructure
+    sub-optimales, ...). Pour autant, si la donnée circule moins et
+    que les tensions sur les infrastructures réseau ou les serveurs
+    diminuent, alors des optimisations en énergie plutôt qu'en
+    performance/rapidité deviennent possible. Attention cependant : ce
+    ne sont que de simples conjectures qui ne s'appuient sur aucune
+    étude spécifique. Ces assertions restent à prouver par des données
+    chiffrées, ce qui dépasse largement le périmètre de cet
+    article. *La décentralisation offre des avantages écologiques, la
+    centralisation en offre d'autres.* Sans données 'terrain', le
+    débat est loin d'être tranché.
+
+** Conclusion
+
+    L'informatique s'est imposé comme l'une des disciplines les plus
+    importantes de notre ère. Notre société est devenue de plus en
+    plus interconnectée. Cela a requis des infrastructures, des
+    architectures et des technologies capables de supporter cette
+    interconnection toujours croissante. Il y a quelques années, les
+    solutions Cloud centralisées ont fait leur apparition, ont gagné
+    beaucoup de terrain et ont tenu leur rôle de pionnières dans
+    l'outillage pour une collaboration fluide, ergonomique et sans
+    contrainte de distance.
+
+    Cette article a présenté une alternative à ces architectures Cloud
+    centralisées : les architectures Local-First. Ces dernières
+    mettent l'accent sur la souveraineté de l'utilisateur au regard de
+    ses données et de ses usages, tout en respectant les exigences
+    qualitatives de notre époque. Si cette architecture émerge, c'est
+    qu'elle comble certaines lacunes des solutions cloud classiques :
+    privacy, efficience, propriété, extensibilité, interopérabilité,
+    durée de vie, disponibilité et rapports de force.
+
+    Le Local-First n'est pas sans challenges techniques, managériaux,
+    stratégiques et économiques. Cependant, les bénéfices qui en
+    découlent méritent l'attention des investisseurs, des éditeurs,
+    des experts techniques mais aussi des utilisateurs. En joignant
+    nos forces, nous pouvons façonner l'informatique de demain, et la
+    rendre plus juste.
