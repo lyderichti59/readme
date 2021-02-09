@@ -1,33 +1,8 @@
-* org-braindump
+* Lydéric's Digital Garden
 
-This example showcases how you can use [[https://github.com/rasendubi/uniorg
-][uniorg]] and [[https://nextjs.org/][Next.js]] to publish a
-simple website from Org files. It is tailored to publishing a
-collection of interlinked notes.
+In this repository, you will find everything about my digital garden :
+random notes & blog articles.
 
-It is compatible with [[https://github.com/org-roam/org-roam][org-roam]] but org-roam is not a requirement.
+The content is mainly within ~*.org~ files in the ~public~ folder.
 
-** Demo
-
-[[https://org-braindump.vercel.app][https://org-braindump.vercel.app]]
-
-** Deploy your own
-
-Deploy the example using [[https://vercel.com][Vercel]]:
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/rasendubi/uniorg/tree/master/examples/org-braindump&project-name=org-blog-starter&repository-name=braindump)
-
-** How to use
-
-Execute [[https://github.com/vercel/next.js/tree/canary/packages/create-next-app][`create-next-app`]] with [[https://docs.npmjs.com/cli/init][npm]] or [[https://yarnpkg.com/lang/en/docs/cli/create/][Yarn]] to bootstrap the example:
-
-#+begin_src bash
-npx create-next-app --example https://github.com/rasendubi/uniorg/tree/master/examples/org-braindump braindump
-# or
-yarn create-next-app --example https://github.com/rasendubi/uniorg/tree/master/examples/org-braindump braindump
-#+end_src
-
-Your braindump should be up and running on [[http://localhost:3000][http://localhost:3000]]!
-If it doesn't work, post on [[https://github.com/rasendubi/uniorg/discussions][GitHub discussions]].
-
-Deploy it to the cloud with [[https://vercel.com/new][Vercel]] [[https://nextjs.org/docs/deployment][(Documentation]]).
+To contribute, see ~./dev/contributing.org~.

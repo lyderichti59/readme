@@ -1,4 +1,0 @@
-#+TITLE: org-roam
-
-[[https://github.com/org-roam/org-roam][org-roam]] is plain-text knowledge management system. You can
-useorg-roam with this example but that is not a requirement.
