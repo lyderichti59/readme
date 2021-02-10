@@ -1,7 +1,0 @@
-#+TITLE: Financial Education Tips & Quotes
-
-
-#+BEGIN_QUOTE
-“The three most harmful addictions are heroin, carbohydrates, and a monthly salary.”
-— NASSIM NICHOLAS TALEB
-#+END_QUOTE
