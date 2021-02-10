@@ -38,7 +38,7 @@
         [:div.def-content
          #_(render :breadcrumbs)
          [:h1.mb0 title]
-         [:div.flex
+         [:div.flex.flex-wrap
           (date-block (:created txt) date-created)
           (date-block (:updated txt) date-updated)]
          (if firn-article
@@ -55,7 +55,9 @@
             (when toc
               [:div
                [:span.h4 (:toc txt)]
-               [:div (render :toc (when firn-article {:headline "Article", :exclude-headline? true}))]])
+               [:div
+                (render :toc (when firn-article
+                               {:headline "Article", :exclude-headline? true}))]])
             (when backlinks
               [:div
                [:span.h4 (:backlinks txt)] backlinks])]))]]]))

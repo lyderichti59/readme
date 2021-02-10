@@ -134,7 +134,7 @@ pre code {
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding: 0px 48px;
+  padding: 0px 48px 48px 48px;
   height: calc(100vh-54px);
   max-width: 48em;
   margin: auto;
@@ -189,6 +189,10 @@ pre code {
   .def-toc {
     display: none;
   }
+  .nav-container{
+    padding-right: 8px;
+    padding-left: 3%;
+  }
 }
 
 @media(max-width: 1250px) {
@@ -237,12 +241,12 @@ pre code {
   }
 
   .def-content {
-    padding: 0 32px;
+    padding: 0px 32px 48px 32px;
   }
   /* Nav Icon */
   #nav-icon {
-    width: 60px;
-    height: 45px;
+    width: 44px;
+    height: 33px;
     position: relative;
     -webkit-transform: rotate(0deg);
     -moz-transform: rotate(0deg);
@@ -252,7 +256,7 @@ pre code {
     -moz-transition: .5s ease-in-out;
     -o-transition: .5s ease-in-out;
     transition: .5s ease-in-out;
-    transform: scale(0.4);
+    transform: scale(0.5);
     cursor: pointer;
   }
 
@@ -317,7 +321,6 @@ pre code {
   .nav-left {
     display: flex;
     align-items: center;
-    margin-left: -18px;
   }
 }
 
