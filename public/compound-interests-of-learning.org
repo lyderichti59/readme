@@ -21,8 +21,8 @@ workflow and someone who does. Let's say both are given a
 day, 5 days per week, 47 weeks per year (5 weeks off per year)). The
 one that doesn't perfect its workflow will take 40 years to make it.
 The other invests 1 hour per week in learning, and for each hour
-invested, he wins 12 seconds over his workmate. *It will take him
-9.5 years less than his non-learning workmate to do just as much*.
+invested, he wins 12 seconds per day over his workmate. *It will take 
+him 9.5 years less than his non-learning workmate to do just as much*.
 
 A one hour learning session for saving only 12 seconds spared each
 following days doesn't seem much, but it could make you retire 10
