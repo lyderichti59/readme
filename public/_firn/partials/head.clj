@@ -10,4 +10,5 @@
    [:link {:rel "stylesheet" :href (build-url "/static/css/customization.css")}]
    [:link {:rel "icon" :type "image/svg+xml" :href (build-url "/static/img/logo-gold.svg")}]
    [:title site-title]
-   [:script {:src (build-url "/static/js/prism.js")}]])
+   [:script {:src (build-url "/static/js/prism.js")}]
+   [:script {:src (build-url "/static/js/analytics.js")}]])
