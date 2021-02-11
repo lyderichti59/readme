@@ -15,5 +15,5 @@
          [:hr]
          [:h1 "File Tags"]
          [:div.pb4
-          (render :firn-tags)]
-         (footer)]]]]]))
+          (render :firn-tags)]]]]
+      (footer "en")]]))

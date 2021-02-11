@@ -24,40 +24,41 @@
            build-url title render
            partials firn-article] :as data}]
   (let [{:keys [head nav footer]} partials
-        {:keys [firn-article language]} (:keywords meta)
-        txt (texts language)]
+        {:keys [firn-article language] :or {language  "en"}} (:keywords meta)
+        txt (texts language)
+        toc       (render :toc)
+        backlinks (render :backlinks)]
     [:html
      (head data)
      [:body
       (nav build-url)
-      [:main.def-wrapper
-       [:aside#sidebar.def-sidebar.unfocused
-        [:h1 (:sitemap txt)]
-        (render :sitemap {:sort-by :oldest})]
-       [:article.def-content-wrap
-        [:div.def-content
-         #_(render :breadcrumbs)
-         [:h1.mb0 title]
-         [:div.flex.flex-wrap
-          (date-block (:created txt) date-created)
-          (date-block (:updated txt) date-updated)]
-         (if firn-article
-           (render "Article" {:exclude-headline? true})
-           (render :file))
-         #_[:div.adjacent-files
-            [:span (render :adjacent-files)]]
-         (footer)]]
-
-       (let [toc       (render :toc)
-             backlinks (render :backlinks)]
-         (when (or toc backlinks)
-           [:aside#toc.def-toc.unfocused
-            (when toc
+      [:main
+       [:div.def-wrapper.border-bottom
+        [:aside#sidebar.def-sidebar.unfocused
+         [:span.h2 (:sitemap txt)]
+         (render :sitemap {:sort-by :oldest})]
+        [:article
+         {:class (str "def-content-wrap  border-left" (when (or toc backlinks) " border-right"))}
+         [:div.def-content
+          #_(render :breadcrumbs)
+          [:h1.mb0 title]
+          [:div.flex.flex-wrap
+           (date-block (:created txt) date-created)
+           (date-block (:updated txt) date-updated)]
+          (if firn-article
+            (render "Article" {:exclude-headline? true})
+            (render :file))
+          #_[:div.adjacent-files
+             [:span (render :adjacent-files)]]]]
+        (when (or toc backlinks)
+          [:aside#toc.def-toc.unfocused
+           (when toc
+             [:div
+              [:span.h4 (:toc txt)]
               [:div
-               [:span.h4 (:toc txt)]
-               [:div
-                (render :toc (when firn-article
-                               {:headline "Article", :exclude-headline? true}))]])
-            (when backlinks
-              [:div
-               [:span.h4 (:backlinks txt)] backlinks])]))]]]))
+               (render :toc (when firn-article
+                              {:headline "Article", :exclude-headline? true}))]])
+           (when backlinks
+             [:div.mt2
+              [:span.h4 (:backlinks txt)] backlinks])])]
+       (footer language)]]]))

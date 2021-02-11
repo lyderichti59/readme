@@ -8,4 +8,4 @@
       [:main.content {:style "max-width: 42em; padding: 32px; margin: 0 auto;"}
        [:div.py3
         (render "Details" :content)]]
-      (footer)]]))
+      (footer "en")]]))
