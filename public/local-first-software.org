@@ -1,6 +1,6 @@
 #+TITLE: Consommer "Local-First" en informatique
 #+DATE_CREATED: <2021-02-02>
-#+DATE_UPDATED: <2021-02-10 21:30>
+#+DATE_UPDATED: <2021-02-15 16:16>
 #+LANGUAGE: fr
 #+FIRN_UNDER: "Blog"
 #+FIRN_ARTICLE: true
@@ -37,7 +37,7 @@
     machine, vous devez d'abord en faire don* *à votre fournisseur de
     services et ensuite lui en demander une copie.*
 
-    Vous avez certainement déjà expérimenté la situation suivante :
+    Vous avez certainement déjà expérimenté la situation suivante:
     - Vous vous connectez à un service en ligne ;
     - Vous effectuez une modification de vos données personnelles ;
     - Soudain, une erreur réseau se produit ;
@@ -122,7 +122,7 @@
     principes* *promouvant le fonctionnement en local d'un système
     informatique.*
 
-    Cette approche a été démocratisée par *[[https://martin.kleppmann.com/][Martin Kleppmann*]] en Avril
+    Cette approche a été démocratisée par *[[https://martin.kleppmann.com/][Martin Kleppmann]]* en Avril
     2019 dans son article scientifique [[https://martin.kleppmann.com/papers/local-first.pdf]["Local-first software: you own
     your data, in spite of the cloud"]]. (Aparté : Je vous encourage
     vivement à lire ses travaux, très riches en information. Je ne me
@@ -585,7 +585,7 @@
 
 ** Conclusion
 
-    L'informatique s'est imposé comme l'une des disciplines les plus
+    L'informatique s'est imposée comme l'une des disciplines les plus
     importantes de notre ère. Notre société est devenue de plus en
     plus interconnectée. Cela a requis des infrastructures, des
     architectures et des technologies capables de supporter cette
