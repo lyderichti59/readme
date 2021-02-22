@@ -161,6 +161,7 @@ main{
   padding: 8px 0px;
   height: var(--nav-height);
   position: sticky;
+  position: -webkit-sticky;
   top: 0;
   width: 100%;
   z-index: 2;
@@ -243,6 +244,7 @@ main{
     overflow: auto;
     max-height: 90vh;
     box-shadow: 5px 15px 15px rgba(0,0,0,0.5);
+    z-index:1;
   }
 
   .def-content {

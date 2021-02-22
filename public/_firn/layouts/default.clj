@@ -35,7 +35,7 @@
       [:main
        [:div.def-wrapper.border-bottom
         [:aside#sidebar.def-sidebar.unfocused
-         [:span.h2 (:sitemap txt)]
+         [:span.h2.mt2 (:sitemap txt)]
          (render :sitemap {:sort-by :oldest})]
         [:article.rss
          {:class (str "def-content-wrap  border-left" (when (or toc backlinks) " border-right"))}
