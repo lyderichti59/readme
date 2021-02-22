@@ -73,7 +73,7 @@ body {
   /* font-family: var(--font-family); */
   font-family: 'IBM Plex Sans';
   line-height: var(--line-height);
-  font-size: 15px;
+  font-size: 16px;
   margin: 0;
   overflow-x: hidden;
 }
@@ -433,7 +433,7 @@ li > p {
 
 /* Set the parent element, so we can size-down on mobile. */
 .firn-fold {
-  font-size: 15px;
+  font-size: 16px;
 }
 .firn-headline-summary-1 {
   font-size: 1.3em;
