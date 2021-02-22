@@ -96,6 +96,7 @@ main{
 }
 
 .def-sidebar {
+  position: -webkit-sticky;
   position: sticky;
   min-width: var(--sidebar-width);
   width: var(--sidebar-width);
@@ -110,6 +111,7 @@ main{
 }
 
 .def-toc {
+  position: -webkit-sticky;
   position: sticky;
   min-width: var(--sidebar-width);
 
