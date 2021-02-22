@@ -377,6 +377,9 @@ main > *{
 
 @media (min-width:1251px)
 {
+  .def-content-wrap {
+    border-left: 1px solid var(--border-col);
+  }
   .nav-links{
     margin:auto;
   }

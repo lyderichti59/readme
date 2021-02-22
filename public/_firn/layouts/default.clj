@@ -38,7 +38,7 @@
          [:span.h2.mt2 (:sitemap txt)]
          (render :sitemap {:sort-by :oldest})]
         [:article.rss
-         {:class (str "def-content-wrap  border-left" (when (or toc backlinks) " border-right"))}
+         {:class (str "def-content-wrap " (when (or toc backlinks) " border-right"))}
          [:div.def-content
           #_(render :breadcrumbs)
           [:h1.mb0 title]
