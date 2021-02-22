@@ -5,12 +5,12 @@
 
 (defn nav
   [build-url]
-  (let [links [[(build-url "/") "Home"]
-               #_[(build-url "/feed.xml") "RSS"]
-               ["https://www.origenial.fr" "Origenial"]
-               ["https://www.linkedin.com/in/lyderic-dutillieux/" "Linkedin"]
+  (let [links [#_[(build-url "/") "Home"]
+               [(build-url "/feed.xml") "RSS"]
                ["https://www.twitter.com/lyderichti59/" "Twitter"]
-               ["https://www.github.com/lyderichti59/readme" "Github"]]]
+               ["https://www.github.com/lyderichti59/readme" "Github"]
+               ["https://www.linkedin.com/in/lyderic-dutillieux/" "Linkedin"]
+               ["https://www.origenial.fr" "Origenial"]]]
     ;; left nav.
     [:nav.nav
      [:div.nav-container
