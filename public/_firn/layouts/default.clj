@@ -53,7 +53,7 @@
         (when (or toc backlinks)
           [:aside#toc.def-toc.unfocused
            (when toc
-             [:div
+             [:div.mt2
               [:span.h4 (:toc txt)]
               [:div
                (render :toc (when firn-article
