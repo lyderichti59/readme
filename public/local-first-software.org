@@ -1,8 +1,8 @@
 #+TITLE: Consommer "Local-First" en informatique
 #+DATE_CREATED: <2021-02-02>
-#+DATE_UPDATED: <2021-02-15 16:16>
+#+DATE_UPDATED: <2021-03-25 22:49>
 #+LANGUAGE: fr
-#+FIRN_UNDER: "Blog"
+#+FIRN_UNDER: "Blog" "Privacy"
 #+FIRN_ARTICLE: true
 
 * Article

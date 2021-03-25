@@ -1,0 +1,295 @@
+#+TITLE: Installing NixOS on a VPS hosted at OVH
+#+DATE_CREATED: <2021-03-23>
+#+DATE_UPDATED: <2021-03-25 22:48>
+#+FIRN_UNDER: "Blog" "NixOS"
+#+FIRN_ARTICLE: true
+
+* Article
+** TLDR
+   In this article, I explain you very shortly what NixOS is, why I
+   felt in love with it, and *how I managed to install it on an
+   ArchLinux VPS hosted at OVH*.
+
+** Introduction
+*** What is NixOS ?
+    [[https://nixos.org/][NixOS]] is a Linux Distribution based on top of the [[https://en.wikipedia.org/wiki/Nix_package_manager][Nix]] package manager,
+    a package manager inspired by the functional programming paradygm. In
+    fact, with Nix & NixOS, your systems can be entirely crafted in a
+    declarative manner from ~*.nix~ configuration files. Nix utilities
+    take these files as input, and produce a system environment for your
+    host as an output. Thus, if you deploy the same configuration files on
+    two machines, they will behave exactly the same way. Same input
+    configurations give same output systems, no matter the hosts' initial
+    state before the deployment.
+
+    You understand it, NixOs makes an emphasis on reproducibility. It's
+    not only about building, it is about building once and forever. But
+    there is more. You can version your changes and rollback them,
+    duplicate a whole system (for example to balance load). You can also
+    create on the fly development environments, that are as short-lived as
+    a shell session. This makes Nix a strong choice for experimenting,
+    installing packages to try new things without being afraid of dangling
+    files if you want to remove some unwanted software.
+
+*** Why do I use NixOS ?
+    As a developer and opensource enthousiast, I self-host many of my work
+    environment. I have been self-hosting for about two years. That's not
+    much, but I still put countless hours in system/infrastructure
+    configuration.
+
+    In early March 2021, [[https://www.reuters.com/article/us-france-ovh-fire-idUSKBN2B20NU][a huge fire burnt my lovely VPS hosted at OVH,]] I
+    lost many hours of work since I had only a partial backup of my
+    system. I painfully understood that *building things once is great*,
+    but *building things forever is better*.
+
+    It happened in a period of my life where I was embracing Functional
+    Programming and its vertues (immutability, statelessness,
+    reproducibility etc) and rebuilding everything with an immutable
+    declarative approach was really appealing.
+
+    I want to capitalize on my work hours and never repeat myself so
+    that I can move on building things. If I have to build my digital
+    life for the next 40 years, then I would better build things in a
+    both revertable and evolvable way, and never fear again a hardware
+    incident.
+
+    Some users even see NixOS as a productive environment since they
+    can sync their laptop's and their fix PC's configurations so that
+    their laptop system modifications when they are on the go
+    can also be applied to their fix PC in a few minutes when they are
+    back home.
+
+    There are plainty of good reasons to use NixOS, and if I could not
+    convince you, please be sure to check what it is worth thanks to your
+    preferred search engine.
+
+*** Credits
+    I found useful resources about the installation process below. I
+    gathered useful things and made it explicit for people interested in
+    installing NixOS (and for my future self that hates repeating itself).
+
+    Links:
+    - [[https://github.com/jeaye/nixos-in-place][nixos-in-place's repository]]
+    - [[https://github.com/elitak/nixos-infect][nixos-infect's repository]]
+    - [[https://drwx.org/2018/01/28/archimedes.html][drwx's blog]]
+
+** Host system configuration
+   The VPS I use is a freshly installed [[https://archlinux.org/][ArchLinux]] hosted at [[https://ovh.com/][OVH]].  When
+   the VPS is freshly installed, it has the following system configuration
+   (with ~cat /etc/os-release && hostnamectl~) :
+
+   #+begin_src
+   NAME="Arch Linux"
+   PRETTY_NAME="Arch Linux"
+   ID=arch
+   BUILD_ID=rolling
+   (...)
+   Operating System: Arch Linux
+   Kernel: Linux 5.10.11-arch1-1
+   Architecture: x86-64
+   #+end_src
+
+   Note : the following manipulations are not guaranteed to work on other
+   systems. This document is just my experience log with this configuration.
+
+** Installing NixOS
+*** Two strategies : ~nixos-in-place~ or ~nixos-infect~
+
+    There are two utilities to install NixOS in place of an existing linux
+    ditribution :
+    - ~nixos-in-place~ is the first community script that appeared
+      chronologicaly, but it is not maintained since September 2018. At
+      this time, the NixOS release used was the 16.09. At time of writing,
+      the latest stable release is 20.09 and contains many updates. This
+      script use a file system bind and moves the pre-existing root folder ~/~
+      to ~/old-root~ so that you may keep some data.
+
+    - ~nixos-infect~ is more recent, and still under active maintenance
+      but has less safeguards. It assumes that you work on a fresh system
+      and does everything in place, wiping some files and folder. If you
+      break your system, you can just reinstall the fresh install thanks
+      to your host provider interface and start the process again.
+
+    I will introduce both ways of doing. However, note that *I recommend
+    using ~nix-infect~ !* Indeed, it is maintained and works on a more
+    recent version of NixOs.
+
+*** Installing with ~nixos-in-place~ (Not recommended)
+**** Requirements
+
+     If your VPS has important data, be sure to backup it.  This process
+     will move your actual root folder ~/~ under ~/old-root~, but keep in
+     mind that there may an error during the process that may corrupt your
+     server and make it hard to recover your data. It is better to do this
+     on a fresh server.
+
+     The installation process requires internet, about 3Gb of RAM and 5Gb
+     of free disk space.
+
+     NOTE : the official repository relies on an old version of NixOS
+     (16.09). At time of writing, the last release of NixOS is
+     20.09. You can try to tweak the version yourself, but I can't
+     guarantee that the script will still execute as expected.
+
+     A more recent alternative installer is : [[https://github.com/elitak/nixos-infect][nixos-infect]]
+
+**** On your ArchLinux VPS
+
+     To install NixOs on a lightweight freshly installed OVH ArchLinux
+     VPS, connect to it via a web shell or via ssh.
+
+     Then, download requirements for git.
+     #+begin_src shell
+     pacman -Sy glibc wget squashfs-tools git
+     #+end_src
+
+     Finally, download nixos-in-place's installer, and execute it.
+     (At time of writing, I am using the commit sha :
+     e20ce4272fb4e3cff4d1cf90e2834e156334829a)
+
+     #+begin_src shell
+     git clone https://github.com/jeaye/nixos-in-place.git
+     cd nixos-in-place
+     #+end_src
+
+     In the repository, the file ~./default-extra-config.nix~ will be copied
+     into nixos host under the path ~/extra-config.nix~, and then compiled
+     and set up.  You can change the default root password (~nixos~)in
+     this file.
+
+     Before launching the installation, check with ~df -h~ that a ~tmpfs~
+     mount exist on the ~/tmp~ folder. In fact, the install script uses
+     the /tmp folder, but this latter is too small due to the mount that
+     OVH adds. Let's just unmount the tmpfs, so that the install script
+     does not reach the memory space limit.
+     #+begin_src shell
+     umount /tmp
+     #+end_src
+
+     To launch the installation, just use :
+     #+begin_src shell
+     ./install
+     #+end_src
+
+     Accept all steps with ~Y~ during the process until it reboots.
+
+**** Re-login to your brand new NixOS VPS
+
+     ~nixos-in-place~ has wiped out your sshconfig and replaced it.
+     You may or may not succeed in login through sshconfig, but let's have
+     a try.
+
+     As NixOS & nixos-in-place documentation states it, the credentials are :
+     - login : root
+     - Password : nixos
+
+     Your ssh client will probably complain about changed host keys.
+     You can removed remote host keys with
+     #+begin_src  shell
+     ssh-keygen -f $HOME/.ssh/known_hosts -R <hostname>
+     #+end_src
+
+     Now, login with ~ssh root@hostname~ and voilà !!
+
+     If you can't login, then you will need to update your SSH
+     configuration with OVH Manager's web shell (KVM - Kernel-based Virtual
+     Machine).
+
+     On, my side, I have this content under the file ~/extra-config~ on the
+     remote host:
+     #+begin_src nix
+     services.openssh.permitRootLogin = "yes";
+     users.extraUsers.root.password = "nixos";
+     #+end_src
+
+     Once you are logged in, you can verify that NixOS is installed with :
+     #+begin_src shell
+     cat /etc/release
+     #+end_src
+
+*** Installing with ~nixos-infect~ (Recommended)
+**** Requirements
+***** An SSH key for the root user
+      Your VPS must be loggable with the root user through SSH without a
+      password. Ensure that it is the case, otherwise, you won't be able to
+      log to your VPS and will need to reinstall it and retry the whole
+      process.
+
+      Reminder : to generate an ssh key pair, you can use ~ssh-keygen -t
+      rsa~, and if you already have a key pair, just ignore this command.
+      You need to send your ssh public key to the root user. Explicitely,
+      the content of your local ~$HOME/.ssh/id_rsa.pub~ must be appended to
+      the remote file ~/root/.ssh/authorized_keys~.
+      You have to options :
+      - Either do it manually via the web shell (KVM) on your OVH Manager
+        interface. (To login as root : ~sudo su -~)
+      - Or, send the key first to your ~arch~ user, whose the password is
+        known, and copy the ssh key to the root user then (by default, on an
+        OVH VPS, you can't login via SSH with the root user) :
+        #+begin_src shell
+        cat ~/.ssh/id_rsa.pub | ssh arch@hostname 'cat >> .ssh/authorized_keys'
+        ssh root@hostname sudo cat /home/arch/.ssh/authorized_keys >> /root/.ssh/authorized_keys
+        #+end_src
+
+**** On your ArchLinux VPS
+
+     Before launching the installation, login to your VPS, then check
+     with ~df -h~ that a ~tmpfs~ mount exist on the ~/tmp~ folder. In
+     fact, the install script uses the /tmp folder, but this latter is
+     too small due to the mount that OVH adds. Let's just unmount the
+     tmpfs, so that the install script does not reach the memory space
+     limit.
+     #+begin_src shell
+     umount /tmp
+     #+end_src
+
+     Ready for the installation ? Just execute :
+     #+begin_src shell
+     curl https://raw.githubusercontent.com/elitak/nixos-infect/master/nixos-infect | NIX_CHANNEL=nixos-20.09 bash -x
+     #+end_src
+
+     The VPS will reboot. Wait a few minutes. Now, you can log with
+     the root user through ssh since your SSH keys have been
+     conserved.
+**** Re-login to your brand new NixOS VPS
+     Your ssh client will probably complain about changed host keys.
+     You can removed remote host keys with
+     #+begin_src  shell
+     ssh-keygen -f $HOME/.ssh/known_hosts -R hostname
+     #+end_src
+
+     Now, login with ~ssh root@hostname~ and voilà !!
+
+** Display a neofetch screen
+   Once logged in. Update the channels (repositories) with
+   ~nix-channel --update~.
+
+   If you try to run ~neofetch~, it won't find the package.
+   Actually, we dont want neofetch on our system. We just want to
+   execute it once and clean everything after.
+
+   Thus, let's create a short-lived shell session, install `neofetch`
+   only for that session, run neofetch et clean everything up as if we
+   had done nothing !
+   #+begin_src shell
+   nix-shell --package neofetch --run neofetch && nix-collect-garbage
+   #+end_src
+
+   You see ! Very simple ! And if you run `neofetch` again, it can't
+   be found as if it had never been installed. Welcome on NixOS !
+
+   #+CAPTION: Screenshot after executing `neofetch`
+   [[file:data/nixos-neofetch.png]]
+
+
+** Conclusion
+   I wanted a NixOS VPS hosted at OVH but this cloud provider does not
+   offer NixOS installations. No problem, thanks to the awesome Nix
+   community, we managed to install NixOS on an ArchLinux VPS. The
+   workflow can still be enhanced, by deploying your pre-existing nix
+   configuration files before running ~nix-infect~ for example.
+
+   I hoped you like this article, I would like to write more about
+   NixOS as soon as I play with it a bit more ! Be sure to follow me
+   on social media or to subscribe to my RSS feed if you want to see
+   more of my content.
