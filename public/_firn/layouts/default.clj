@@ -33,12 +33,12 @@
      [:body
       (nav build-url)
       [:main
-       [:div.def-wrapper.border-bottom
+       [:div.def-wrapper
         [:aside#sidebar.def-sidebar.unfocused
          [:span.h2.mt2 (:sitemap txt)]
          (render :sitemap {:sort-by :oldest})]
         [:article.rss
-         {:class (str "def-content-wrap " (when (or toc backlinks) " border-right"))}
+         {:class (str "def-content-wrap" (when (or toc backlinks) " border-right "))}
          [:div.def-content
           #_(render :breadcrumbs)
           [:h1.mb0 title]
@@ -50,15 +50,15 @@
             (render :file))
           #_[:div.adjacent-files
              [:span (render :adjacent-files)]]]]
-        (when (or toc backlinks)
-          [:aside#toc.def-toc.unfocused
-           (when toc
-             [:div.mt2
-              [:span.h4 (:toc txt)]
-              [:div
-               (render :toc (when firn-article
-                              {:headline "Article", :exclude-headline? true}))]])
-           (when backlinks
-             [:div.mt2
-              [:span.h4 (:backlinks txt)] backlinks])])]
+        [:aside#toc
+         {:class (str "def-toc unfocused " (when-not (or toc backlinks) " empty "))}
+         (when toc
+           [:div.mt2
+            [:span.h4 (:toc txt)]
+            [:div
+             (render :toc (when firn-article
+                            {:headline "Article", :exclude-headline? true}))]])
+         (when backlinks
+           [:div.mt2
+            [:span.h4 (:backlinks txt)] backlinks])]]
        (footer language)]]]))

@@ -61,7 +61,7 @@ code {
 }
 
 pre {
-  padding: 1rem;
+/*  padding: 1rem; */
   padding-bottom: 0;
   background: #2d2d2d;
   border-radius: 2px;
@@ -72,7 +72,7 @@ pre code {
   overflow-x: auto;
   line-height: 1.8 !important;
   border: none;
-  font-size: 0.85em !important;
+  font-size: 1em !important;
   font-family: "IBM Plex Mono" !important;
   color: #fdfdfd;
   border: 0;
@@ -141,6 +141,7 @@ main > *{
 
 .def-content-wrap {
   flex-grow:1;
+  min-width:0;
   width: 100%;
   min-height: calc(100vh - 35px - 54px);
 }
@@ -239,7 +240,6 @@ main > *{
     display: flex;
     width: 100%;
     border: none;
-    border-bottom: none;
     padding: 0 16px;
     height: auto;
     margin-bottom: 32px;
@@ -268,6 +268,9 @@ main > *{
 
   .def-content {
     padding: 0px 32px 48px 32px;
+  }
+  .def-toc.empty{
+    display:none;
   }
   /* Nav Icon */
   #nav-icon {
@@ -493,7 +496,7 @@ main > *{
 #footer details > div {
   //box-shadow: -7px -5px 7px rgba(0,0,0,.2);
   background-color: var(--nav-bg);
-  border-top: 1px solid grey;
+  border-top: 1px solid (--border-col);
   max-height: min(50vh,500px);
 }
 

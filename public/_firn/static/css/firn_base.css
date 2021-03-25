@@ -158,7 +158,7 @@ p {
 
 pre {
   margin: 1rem 0;
-  padding: 1rem 0;
+/*  padding: 1rem 0;*/
 }
 
 pre code,
@@ -537,3 +537,7 @@ li > p {
 .firn-org-tag-list       {}
 .firn-org-tag-item       {}
 .firn-org-tag-link       {}
+
+img {
+  max-width: 100%;
+}
