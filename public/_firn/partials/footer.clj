@@ -4,7 +4,8 @@
      {:en
       {:privacy "Privacy"
        :privacy-policy "Privacy policy"
-       :privacy-description "Only anonymized telemetry data are collected by default"
+       #_#_:privacy-description "Only anonymized telemetry data are collected by default"
+       :privacy-description "Nothing is collected, not even telemetry"
        :legals "Legals"
        :publishing "Publishing"
        :domiciliation "Domiciliation"
@@ -14,7 +15,8 @@
       :fr
       {:privacy "Vie privée"
        :privacy-policy "Politique de protection des données"
-       :privacy-description "Seules des données de mesures d'audience sont récupérées par défaut."
+       #_#_:privacy-description "Seules des données de mesures d'audience sont récupérées par défaut."
+       :privacy-description "Aucune données n'est récupérée (même pas de télémetrie)"
        :legals "Mentions Légales"
        :publishing "Publication"
        :domiciliation "Domiciliation"
@@ -26,7 +28,7 @@
 
 (defn footer [language]
   (let [txt (texts language)]
-    [:footer#footer
+    [:footer#footer.border-top
      [:ul
       [:li "Copyright © 2021"]
       [:li "Lydéric Dutillieux"]
@@ -60,8 +62,8 @@
          [:p
           {:style "margin-bottom:0px;"}
           (:privacy-description txt)]
-         [:iframe
-          {:src
-           (str "https://analytics.origenial.fr/index.php?module=CoreAdminHome&action=optOut&language=" language "&fontSize=0.8em&fontFamily=Robot,Ubuntu,sans-serif&fontColor=888888"),
-           :style "border: 0; width: 100%; height:100px;font-color:var(--nav-bg-inverse);"}]]]]]
+         #_[:iframe
+            {:src
+             (str "https://analytics.origenial.fr/index.php?module=CoreAdminHome&action=optOut&language=" language "&fontSize=0.8em&fontFamily=Robot,Ubuntu,sans-serif&fontColor=888888"),
+             :style "border: 0; width: 100%; height:100px;font-color:var(--nav-bg-inverse);"}]]]]]
      [:script {:src "/static/js/main.js"}]]))
