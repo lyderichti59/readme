@@ -1,6 +1,6 @@
 #+TITLE: Installing NixOS on a VPS hosted at OVH
 #+DATE_CREATED: <2021-03-23>
-#+DATE_UPDATED: <2021-03-26 08:13>
+#+DATE_UPDATED: <2021-03-26 11:20>
 #+FIRN_UNDER: "Blog" "NixOS"
 #+FIRN_ARTICLE: true
 
@@ -289,7 +289,7 @@
    workflow can still be enhanced, by deploying your pre-existing nix
    configuration files before running ~nix-infect~ for example.
 
-   I hoped you like this article, I would like to write more about
+   I hope you liked this article, I would like to write more about
    NixOS as soon as I play with it a bit more ! Be sure to follow me
    on social media or to subscribe to my RSS feed if you want to see
    more of my content.
