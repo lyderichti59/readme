@@ -1,10 +1,10 @@
 #+TITLE: Consommer "Local-First" en informatique
+#+SUBTITLE: Comment trouver le bon équilibre entre logiciels dans le cloud et logiciels sur machine.
 #+DATE_CREATED: <2021-02-02>
-#+DATE_UPDATED: <2021-03-25 22:49>
+#+DATE_UPDATED: <2024-02-06>
+#+LAYOUT: post
 #+LANGUAGE: fr
 
-
-* Article
 ** Introduction
 *** C'est qui le patron ? L'utilisateur ou le data center ?
 

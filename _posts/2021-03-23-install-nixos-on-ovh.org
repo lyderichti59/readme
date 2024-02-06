@@ -1,12 +1,9 @@
 #+TITLE: Installing NixOS on a VPS hosted at OVH
+#+SUBTITLE: Leveraging nixos-infect on a ArchLinux VPS OVH offering.
 #+DATE_CREATED: <2021-03-23>
-#+DATE_UPDATED: <2021-03-26 11:20>
-
-* Article
-** TLDR
-   In this article, we will go through what *NixOS* is, why I
-   felt in love with it, and *how I managed to install it on an
-   ArchLinux VPS hosted at OVH*.
+#+DATE_UPDATED: <2024-02-06>
+#+LANGUAGE: fr
+#+LAYOUT: post
 
 ** Introduction
 *** What is NixOS ?
@@ -277,7 +274,7 @@
    be found as if it had never been installed. Welcome on NixOS !
 
    #+CAPTION: Screenshot after executing `neofetch`
-   [[file:data/nixos-neofetch.png]]
+   [[file:assets/images/nixos-neofetch.png]]
 
 
 ** Conclusion

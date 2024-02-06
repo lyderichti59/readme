@@ -3,26 +3,29 @@
 ** Setup
 *** Installing Jekyll and dependencies (macOs)
 
+  Jekyll is deployed with the 'jekyll-org' plugin and with Github Pages.
+  Consequently, github pages' runtime  must be respected to grant env parity.
+  See also : https://pages.github.com/versions/
+
   Below steps are extraacted from : https://jekyllrb.com/docs/installation/macos/
   - Install a ruby environment manager : ~brew install chruby ruby-install xz~
-  - Install the version of ruby supported by this website : ~ruby-install ruby 3.1.3~
+  - Install the version of ruby supported by this website : ~ruby-install ruby 2.7.4~
   - Setup your zsh shell
+
   ```
   echo "source $(brew --prefix)/opt/chruby/share/chruby/chruby.sh" >> ~/.zshrc
   echo "source $(brew --prefix)/opt/chruby/share/chruby/auto.sh" >> ~/.zshrc
-  echo "chruby ruby-3.1.3" >> ~/.zshrc # run 'chruby' to see actual version
   ```
-  - Check that it works with : ~ruby -v~
+
+  - Check that it works on a new shell with : ~chruby ruby-2.4.7 && ruby -v
   - Install Bundler with `gem` : ~gem install bundler~
 
 *** Initialising the repository for the first time
   - ~bundle init
   - Bundle dependencies in a local project :  ~bundle config set --local path 'vendor/bundle'~
   - ~bundle add jekyll~
-  - ~bundle add webrick~ (for ruby > 3.0 if serving jekyll dev servers fails)
   - ~bundle exec jekyll new --force --skip-bundle .~ to init the Jekyll folder
   - ~bundle install~
 
 ** Operate
-
    - To serve a dev server, once sucessfully setup, try : ~bundle exec jekyll serve~

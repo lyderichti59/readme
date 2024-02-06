@@ -1,6 +1,8 @@
 #+TITLE: Targeted knowledge
+#+SUBTITLE: Idealistic view on unsollicited pop-up and critics of ads
 #+DATE_CREATED: <2021-03-05>
 #+DATE_UPDATED: <2021-03-05 10:35>
+#+LAYOUT: post
 
 *Imagine a world where* targeted advertisements would not exist and
 instead *we would be surrounded by targeted educational contents*.
