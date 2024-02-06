@@ -22,8 +22,8 @@ title: Lydéric's Blog
 email: lyderic.dutillieux@origenial.fr
 description: >- # this means to ignore newlines until "baseurl:"
   Talking about technology, business, personal development and science.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://lyderic.origenial.fr" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/readme" # the subpath of your site, e.g. /blog
+url: "https://lyderichti59.github.io" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: lyderichti59
 github_username:  lyderichti59
 
