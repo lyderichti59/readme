@@ -1,7 +1,6 @@
 #+TITLE: The compound interests of learning
 #+DATE_CREATED: <2021-02-01>
 #+DATE_UPDATED: <2021-02-12 11:26>
-#+FIRN_UNDER: "Random notes"
 
 When you learn *productivity tips*, there is hope for *long term ROI* on
 the time you invest in learning. If you know *the power of coumpound

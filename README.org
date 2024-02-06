@@ -1,10 +1,6 @@
-* Lydéric's Digital Garden
+* Lydéric's Blog
 
-In this repository, you will find everything about my digital garden :
-random notes & blog articles.
-
-The digital garden is hosted on [[https://www.origenial.fr][Origénial]], at [[https://lyderic.origenial.fr][lyderic.origenial.fr]].
+In this repository, you will find the source code of my blog : mostly article contents.
+The blog is hosted at [[https://lyderic.origenial.fr][lyderic.origenial.fr]].
 
 The content is mainly within ~*.org~ files in the ~public~ folder.
-
-To contribute, see ~./dev/contributing.org~.

@@ -1,8 +1,6 @@
 #+TITLE: Installing NixOS on a VPS hosted at OVH
 #+DATE_CREATED: <2021-03-23>
 #+DATE_UPDATED: <2021-03-26 11:20>
-#+FIRN_UNDER: "Blog" "NixOS"
-#+FIRN_ARTICLE: true
 
 * Article
 ** TLDR
