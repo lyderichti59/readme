@@ -3,4 +3,4 @@
 In this repository, you will find the source code of my blog : mostly article contents.
 The blog is hosted at [[https://lyderic.origenial.fr][lyderic.origenial.fr]].
 
-The content is mainly within ~*.org~ files in the ~public~ folder.
+The content is mainly within ~*.org~ files in the ~src~ folder.
