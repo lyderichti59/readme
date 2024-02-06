@@ -20,6 +20,6 @@ So, enjoy the ride on this (admittedly inactive) blog and feel free to reach out
 * Latest articles
 
 {% for post in site.posts %}
-- [[{{ post.url }}][{{ post.title }}]]\\
+- [[{{ post.url | absolute_url }}][{{ post.title }}]] \\
   {{ post.subtitle }}
 {% endfor %}
