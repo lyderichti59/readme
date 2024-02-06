@@ -18,10 +18,10 @@
     state before the deployment.
 
     You understand it, NixOs makes an emphasis on reproducibility. It's
-    not only about building, it is about building once and forever. But
-    there is more. You can version your changes and rollback them,
+    not only about building, it is also about building once and forever. But
+    there is more. You can version your changes and roll them back,
     duplicate a whole system (for example to balance load). You can also
-    create on the fly development environments, that are as short-lived as
+    create development environments on the fly, that are as short-lived as
     a shell session. This makes Nix a strong choice for experimenting,
     installing packages to try new things without being afraid of dangling
     files if you want to remove some unwanted software.
