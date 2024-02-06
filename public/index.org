@@ -3,16 +3,22 @@
 #+DATE_CREATED: <2021-01-30 sam.>
 #+DATE_UPDATED: <2024-02-06 08:12>
 
-Hi, welcome on my blog ! I like to share ideas about business, IT, personal development and science.
+Hi, welcome on my blog !
 
-Sharing gives many collective opportunities, and I'm fearly convinced that [[https://www.youtube.com/watch?v=1THE-vyhk4A]["Apes together strong"]].
-So, enjoy the ride and feel free to reach out one way or another.
+I'm Lydéric Dutillieux, I'm 25 years old at time of writing, and I'm
+passionate about technology, business, investment, personal
+development and science.
 
+I'm a problem solver, and I work as an IT Consultant at [[https://www.origenial.fr/][Origénial]], my own modest Consultancy.
 
-The first release of this braindump has been made on the 31st January 2021,
-when I was freshly out of school. The blog is now inactive, but I thought I'd keep it, cause it's cheap and some
-articles are referenced elsewhere.
+Sharing ideas gives many collective opportunities, and I'm fearly convinced that [[https://www.youtube.com/watch?v=1THE-vyhk4A]["Apes together strong"]].
+So, enjoy the ride on this blog and feel free to reach out one way or another.
 
 -----
 
-/PS/ : This blog is written with [[https://www.gnu.org/software/emacs/][Emacs]] using [[https://www.orgmode.org/][org files]].
+/PS 1/ : The first release of this blog has been made on the 31st January 2021,
+when I was 22 and freshly out of school. The blog is now inactive, but I thought I'd keep it, cause it's cheap and some
+articles are referenced on internet already and I don't want to break the links.
+
+
+/PS 2/ : This blog is written with [[https://www.gnu.org/software/emacs/][Emacs]] using [[https://www.orgmode.org/][org files]].
