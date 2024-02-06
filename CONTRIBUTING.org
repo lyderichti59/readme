@@ -3,11 +3,9 @@
 ** Setup
 *** Installing Jekyll and dependencies (macOs)
 
-  Jekyll is deployed with the 'jekyll-org' plugin and with Github Pages.
-  Consequently, github pages' runtime  must be respected to grant env parity.
-  See also : https://pages.github.com/versions/
+  Jekyll is deployed with the 'jekyll-org' plugin, which only works with Ruby 2.x unfortunately.
 
-  Below steps are extraacted from : https://jekyllrb.com/docs/installation/macos/
+  Below steps are extracted from : https://jekyllrb.com/docs/installation/macos/
   - Install a ruby environment manager : ~brew install chruby ruby-install xz~
   - Install the version of ruby supported by this website : ~ruby-install ruby 2.7.4~
   - Setup your zsh shell
@@ -28,4 +26,7 @@
   - ~bundle install~
 
 ** Operate
-   - To serve a dev server, once sucessfully setup, try : ~bundle exec jekyll serve~
+   - To serve a dev server, once sucessfully setup, try : ~bundle exec jekyll serve --livereload --incremental~
+   - As Github Pages do not support the ~jekyll-org~ plugin, .org files are not rendered with the github pages builder.
+     Consequently, the website must be deployed manually. Build the ouptut ~_site~ folder with the following command:
+     ~JEKYLL_ENV=production bundle exec jekyll build~ and upload the file to Netlify
