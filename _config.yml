@@ -26,6 +26,7 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "https://lyderic.origenial.fr" # the base hostname & protocol for your site, e.g. http://example.com
 twitter_username: lyderichti59
 github_username:  lyderichti59
+author: Lydéric Dutillieux
 
 # Build settings
 remote_theme: pages-themes/hacker@v0.2.0
@@ -45,6 +46,7 @@ org:
 show_downloads: false
 github:
   is_project_page: true
+  repository_url: https://github.com/lyderichti59/readme
 
 # Routing
 permalink: none
